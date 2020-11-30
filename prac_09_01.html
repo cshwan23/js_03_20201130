@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+
+	<style type="text/css">
+		
+		#xxx{
+		font-family: tahoma, 굴림, 돋움, verdana;
+
+		color: #444444;
+			}
+	</style>>
+		
+
+
+
+</head>
+<body id ="xxx">
+
+<script type="text/javascript">
+
+//*********************************************
+document.write("<hr>1. ") // 배열객체 데이터 저장 
+//-----------------------
+
+
+var kors = new Array();
+
+kors.push(80);
+kors.push(90);
+kors.push(70);
+kors.push(60);
+kors.push(9);
+
+document.write("모든 국어 점수 출력 : ");
+
+for(var i = 0 ; i<kors.length; i++){
+
+document.write(kors[i] + " ");
+
+}
+
+
+
+
+
+
+//*********************************************
+document.write("<hr>2. ") // 콤마 넣기 
+//-----------------------
+
+document.write("모든 국어 점수 출력 : "+kors.join(", "));
+
+
+
+
+
+//*********************************************
+document.write("<hr>3. ") // 오름차순 
+//-----------------------
+
+kors.sort(function(left,right){return left-right });
+
+document.write("오름차순 정렬 후 모든 국어점수 출력 : "+kors.join(", "));
+
+
+
+
+//*********************************************
+document.write("<hr>4. ") // 내림차순 
+//-----------------------
+
+
+var engs = [99, 88, 77, 66, 55];
+
+engs.push(44);
+engs.sort(function(left,right){return right-left;});
+
+document.write("모든 영어점수 내림차순으로 정렬후 출력 : " + engs.join(", "));
+
+
+//*********************************************
+document.write("<hr>5. ") // 역순으로 뒤집기
+//-----------------------
+
+engs.reverse();
+
+document.write("영어점수 역순으로 바꿔서 출력 : " + engs.join(", "));
+
+
+//*********************************************
+document.write("<hr>6. ") // 역순으로 뒤집기
+//-----------------------
+
+
+var mats = new Array();
+
+mats[0] = 99;
+mats[1] = 66;
+mats[2] = 88;
+mats[3] = 77;
+mats[4] = 55;
+
+mats.sort(function(left,right){return right-left;});
+document.write("수학점수 내림차순으로 정렬후 출력 : "+ mats.join(" "));
+
+
+//*********************************************
+document.write("<hr>7. ") // 0-2번 인덱스만 뽑아서 복사해서 출력하기.
+//-----------------------
+
+var mats_new = mats.slice(0,3);
+
+document.write("수학점수 1~3번째만 출력 : "+mats_new.join(", "));
+
+
+//*********************************************
+document.write("<hr>8. ") // 기존 수학 점수 출력 
+//-----------------------
+document.write("기준 수학점수 출력 : " +mats.join(", "));
+
+
+
+//*********************************************
+document.write("<hr>9. ") // 오려낸 수학점수 2-4등만 출력
+//-----------------------
+
+
+var mats_new2 = mats.splice(1, 3);
+
+document.write("오려낸 수학점수 2-4등만 출력 : "+mats_new2.join(", "));
+
+
+//*********************************************
+document.write("<hr><b>10. ") // 오려낸 수학점수 2-4등만 출력
+document.write("국어점수, 영어점수를 concat으로 합쳐서 출력</b><hr>")
+//-----------------------
+
+var kors_engs = kors.concat(engs);
+
+document.write("=> "+kors_engs.join(", "));
+
+
+//*********************************************
+document.write("<hr><b>11. ") // 오려낸 수학점수 2-4등만 출력
+document.write("국어점수 뒤에서부터 오려내어 출력")
+document.write("</b><hr>")
+//-----------------------
+document.write(kors.join(" ")+" (원래 국어점수)<hr>");
+
+
+while(kors.length>0){
+
+	document.write(kors.pop()+" ");
+}
+document.write("(뒤에서부터 오려낸 국어점수)<hr>");
+document.write("오려진 원래 국어점수 출력 =>"+kors.join(", "));
+
+//*********************************************
+document.write("<hr><b>12. ") // 1등부터 3등까지 출력
+document.write("1등부터 3등까지 평균성적순으로 학생이름 출력 ")
+document.write("</b><hr>")
+//-----------------------
+
+var stu_name = ["박희병", "서원교", "김란", "황보민", "이성배"];
+
+var avg = [78, 89, 91, 94, 88];
+
+
+// 성적을 높은 순서로 변경
+
+for( var i = 0; i<stu_name.length-1; i++){
+
+	for( var j = i+1 ; j < avg.length; j++){
+
+		if(avg[i]<avg[j]) {
+
+			var tmp = avg[i];
+
+			avg[i] = avg[j];
+
+			avg[j] = tmp;
+
+
+
+			tmp = stu_name[i];
+
+			stu_name[i] = stu_name[j];
+
+			stu_name[j] = tmp;
+
+		}
+	}
+
+}
+
+document.write(stu_name.slice(0,3).join(", "));
+
+
+
+//*********************************************
+document.write("<hr><b>13. ") // 1등부터 3등까지 출력 과락 제외 
+document.write("1등부터 3등까지 평균성적순으로 학생이름 출력 과락(60이하) 제외 ")
+document.write("</b><hr>")
+//-----------------------
+
+var stu_name = ["박인선", "문유진", "최승환", "송경근", "안태준"];
+
+var avg = [59, 89, 30, 55, 88];
+
+
+
+for( var i = 0; i<stu_name.length-1; i++){
+
+	for( var j = i+1 ; j < avg.length; j++){
+
+		if(avg[i]<avg[j]) {
+
+			var tmp = avg[i];
+
+			avg[i] = avg[j];
+
+			avg[j] = tmp;
+
+
+
+			tmp = stu_name[i];
+
+			stu_name[i] = stu_name[j];
+
+			stu_name[j] = tmp;
+
+		}
+	}
+
+}
+
+var stu_name_new = [];
+
+for(var i = 0; i<avg.length; i++){
+
+	if(avg[i]>=60)
+	stu_name_new.push(stu_name[i]);
+}
+
+document.write(stu_name_new.slice(0,3).join(", "));
+
+//*********************************************
+document.write("<hr><b>14-1. ") // 각반 국어점수 출력 
+document.write("각1,2,3반 국어점수 출력하기(방법1-2치원배열 반복문 2개 활용) ")
+document.write("</b><hr>")
+//-----------------------
+
+
+var kors = new Array();
+
+kors.push(new Array(80,70,90));
+kors.push(new Array(81,71,91));
+kors.push(new Array(82,72,92));
+
+
+for(var i = 0; i < kors.length; i++){
+
+	for(var j= 0 ; j<kors[i].length; j++ ){
+
+		document.write(kors[i][j]+" ");
+
+	}
+	document.write("<br>")
+
+}
+//*********************************************
+document.write("<hr><b>14-2. ") // 각반 국어점수 출력 
+document.write("각1,2,3반 국어점수 출력하기(방법2-더블반복문x join활용) ")
+document.write("</b><hr>")
+//-----------------------
+
+
+for(var i = 0; i<kors.length; i++){
+
+	document.write(kors[i].join(" "));
+	document.write("<br>");
+}
+
+
+//*********************************************
+document.write("<hr><b>15. ") //반별 국어점수 내림차순 정렬 
+document.write("각1,2,3반 국어점수 반별로 내림차순 정렬 후 출력하기")
+document.write("</b><hr>")
+//-----------------------
+
+for(var i = 0; i<kors.length; i++){
+
+	kors[i].sort(function(left,right){return right-left;});
+	document.write(kors[i].join(" "));
+	document.write("<br>")
+}
+
+
+
+
+//*********************************************
+document.write("<hr><b>16. ") // 각반 평균 출력 
+document.write("각1,2,3반 국어점수 반별로 평균 출력")
+document.write("</b><hr>")
+//-----------------------
+		var ban_avg = []; 
+		for(var i=0; i<kors.length; i++){
+			var tot=0;
+			var avg=0;
+			for(var j=0; j<kors[i].length; j++){
+				tot=tot+kors[i][j];
+			}
+
+			avg=tot/kors[i].length;
+			ban_avg.push(avg);
+
+			document.write(""+avg+"<br>");
+		}
+	document.write(ban_avg.join(" ")+"<br>");
+//*********************************************
+document.write("<hr><b>17. ") // 평균이 제일 높은 반이름 순서로 출력하기  
+document.write("평균이 제일 높은 반이름부터 순서대로 출력하기")
+document.write("</b><hr>")
+//-----------------------
+
+	var ban_name = ["1학년1반","1학년2반","1학년3반"];
+
+	for(var i = 0; i<ban_name.length-1; i++){
+
+		for(var j = i+1; j<ban_avg.length; j++ ){
+
+			if(ban_avg[i]<ban_avg[j]){
+
+				tmp = ban_avg[i];
+				ban_avg[i] = ban_avg[j];
+				ban_avg[j] = tmp;
+
+				tmp = ban_name[i];
+				ban_name[i] = ban_name[j];
+				ban_name[j] = tmp;
+
+			} 
+		}
+	}
+
+	document.write(ban_name.join(" "));
+
+
+//*********************************************
+document.write("<hr><b>18. ") // Array 객체에서 중복된 데이터 제외하고 출력하기***<방법1>  
+document.write("Array 객체에서 중복된 데이터 제외하고 출력하기***<br>")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2,4,5,6,6,7,8,9,3,4,2]")
+document.write("</b><hr>")
+//-----------------------
+
+var num = [2,4,5,6,6,7,8,9,3,4,2];
+var num2 = [];
+
+for(var i = 0; i<num.length-1; i++){
+
+
+	for(var j = i+1; j<num.length; j++ ){
+
+		if(num[i]==num[j]){
+
+			num.splice(j,1);
+			j--;
+		}
+	}
+
+}
+for(var i=0; i<num.length; i++){
+
+	num2.push(num[i]);
+}
+num2.sort(function(left,right){return left-right;});
+document.write(num2.join(" "));
+
+
+//*********************************************
+document.write("<hr><b>19. ") //Array 객체에서 중복된 데이터 중 제일 많이 중복된 데이터를 출력하기*** 
+document.write("Array 객체에서 중복된 데이터 중 제일 많이 중복된 데이터를 출력하기***(구글입사문제)<br>")
+document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2,4,5,6,6,2,7,2,8,9,3,4,2]")
+document.write("</b><hr>")
+//-----------------------
+
+
+var num = [2,4,5,6,6,2,7,2,8,9,3,4,2];
+var num2 = [];
+
+
+for (var i = 0; i < num.length-1; i++) {
+	var cnt =0;
+	for(var j=i+1; j < num.length; j++){
+
+		
+		if(num[i]==num[j]){
+
+			num.splice(j,1);
+			cnt++;
+			j--;
+		}
+		
+	}
+	num2.push(cnt);
+}
+document.write("num : "+num.join(" ")+"<br>");
+document.write("num2 : "+num2.join(" ")+"<br>");
+
+for(var i = 0; i < num2.length-1;i++){
+	for(var j = i+1; j < num2.length; j++){
+
+		if(num2[i]<num2[j]){
+
+			tmp = num2[i];
+			num2[i] = num2[j];
+			num2[j] = tmp;
+
+			tmp = num[i];
+			num[i] = num[j];
+			num[j] = tmp;
+
+		}
+	}
+}
+
+document.write("num : "+num.join(" ")+"<br>");
+document.write("num2 : "+num2.join(" ")+"<br>");
+
+document.write(num.splice(0,1));
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
